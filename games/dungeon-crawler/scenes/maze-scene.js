@@ -25,7 +25,7 @@ export default {
           { name: "DrawGeometryComponent", args: ["gray"] },
           { name: "RectangleGeometryComponent", args: [640, 480] },
         ]
-      }, x:-320, y:-240
+      }//, x:-320, y:-240
     },
     {
       gameObject: {
@@ -34,7 +34,7 @@ export default {
           { name: "DrawGeometryComponent", args: ["yellow"] },
           { name: "RectangleGeometryComponent", args: [30, 30] },
         ]
-      }, x: -315, y: 205
+      }, x: -300, y: 220
     },
     {
       gameObject: {
@@ -386,7 +386,7 @@ export default {
             }, x: -270, y: -235
           },
         ]
-      }, x: -20, y: 20
+      }//, x: -20, y: 20
     },
   
     

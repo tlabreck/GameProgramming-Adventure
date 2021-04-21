@@ -46,7 +46,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:80, y:-18
+            }, x:-40, y:-60
           },
           {
             gameObject: {
@@ -55,7 +55,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:40, y:-18
+            }, x:40, y:-60
           },
           {
             gameObject: {
@@ -64,7 +64,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:0, y:-18
+            }, x:0, y:-60
           },
           {
             gameObject: {
@@ -73,7 +73,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["brown"] },
                 { name: "RectangleGeometryComponent", args: [30, 40] },
               ]
-            }, x:35, y:60
+            }, x:0, y:30
           },
           {
             gameObject: {
@@ -82,7 +82,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["brown"] },
                 { name: "CircleGeometryComponent", args: [15] },
               ]
-            }, x:50, y:60
+            }, x:0, y:10
           },
           {
             gameObject: {
@@ -91,7 +91,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["black"] },
                 { name: "RectangleGeometryComponent", args: [10, 10] },
               ]
-            }, x:65, y:20
+            }, x:20, y:-20
           },
           {
             gameObject: {
@@ -100,7 +100,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["black"] },
                 { name: "RectangleGeometryComponent", args: [10, 10] },
               ]
-            }, x:25, y:20
+            }, x:-20, y:-20
           },
           {
             gameObject: {
@@ -109,7 +109,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["black"] },
                 { name: "CircleGeometryComponent", args: [4] },
               ]
-            }, x:70, y:20
+            }, x:-20, y:-25
           },
           {
             gameObject: {
@@ -118,7 +118,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["black"] },
                 { name: "CircleGeometryComponent", args: [4] },
               ]
-            }, x:30, y:20
+            }, x:20, y:-25
           },
         ]
       }, x:-50, y:-150
