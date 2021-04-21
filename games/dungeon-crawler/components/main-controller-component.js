@@ -52,26 +52,27 @@ export default class MainControllerComponent extends Engine.Component {
       this.hero.transform.position.y = 240
     }
 
-    if (SceneManager.currentScene.name == "MainScene") {
-      this.compnum.getComponent("ScreenTextComponent").string = score;
-      this.compnum1.getComponent("ScreenTextComponent").string = score;
+    // Used to force collisions
+    // if (SceneManager.currentScene.name == "MainScene") {
+    //   this.compnum.getComponent("ScreenTextComponent").string = score;
+    //   this.compnum1.getComponent("ScreenTextComponent").string = score;
 
-      if (this.heroY == -50 && this.heroX > -60 && this.heroX < 50) {
-        this.hero.transform.position.y = this.hero.transform.position.y + 5//this.hero.getComponent("KeyboardMoveComponent");
-      }
-      if (this.heroY == -175 && this.heroX > -60 && this.heroX < 50) {
-        this.hero.transform.position.y = this.hero.transform.position.y - 5
-      }
-      if (this.heroX == -60 && this.heroY > -175 && this.heroY < -50) {
-        this.hero.transform.position.x = this.hero.transform.position.x - 5
-      }
-      if (this.heroX == 50 && this.heroY > -175 && this.heroY < -50) {
-        this.hero.transform.position.x = this.hero.transform.position.x + 5
-      }
-      if (this.heroY > -110 && this.heroY < -100 && this.heroX > -60 && this.heroX < 50) {
-        mazecomplete = false;
-        return SceneManager.changeScene("CheatScene")
-      }
+    //   if (this.heroY == -50 && this.heroX > -60 && this.heroX < 50) {
+    //     this.hero.transform.position.y = this.hero.transform.position.y + 5//this.hero.getComponent("KeyboardMoveComponent");
+    //   }
+    //   if (this.heroY == -175 && this.heroX > -60 && this.heroX < 50) {
+    //     this.hero.transform.position.y = this.hero.transform.position.y - 5
+    //   }
+    //   if (this.heroX == -60 && this.heroY > -175 && this.heroY < -50) {
+    //     this.hero.transform.position.x = this.hero.transform.position.x - 5
+    //   }
+    //   if (this.heroX == 50 && this.heroY > -175 && this.heroY < -50) {
+    //     this.hero.transform.position.x = this.hero.transform.position.x + 5
+    //   }
+    //   if (this.heroY > -110 && this.heroY < -100 && this.heroX > -60 && this.heroX < 50) {
+    //     mazecomplete = false;
+    //     return SceneManager.changeScene("CheatScene")
+    //   }
 
 
       let mouse = Input.getMousePosition();
