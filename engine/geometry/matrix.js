@@ -55,6 +55,16 @@ export default class Matrix {
   get m32() { return this.at(2, 1) }
   get m33() { return this.at(2, 2) }
 
+  set m11(value) { return this.setAt(0, 0, value) }
+  set m12(value) { return this.setAt(0, 1, value) }
+  set m13(value) { return this.setAt(0, 2, value) }
+  set m21(value) { return this.setAt(1, 0, value) }
+  set m22(value) { return this.setAt(1, 1, value) }
+  set m23(value) { return this.setAt(1, 2, value) }
+  set m31(value) { return this.setAt(2, 0, value) }
+  set m32(value) { return this.setAt(2, 1, value) }
+  set m33(value) { return this.setAt(2, 2, value) }
+
   row(r) {
     return this.values.slice(0 + 3 * r, 3 + 3 * r);
   }
@@ -163,6 +173,26 @@ export default class Matrix {
       console.error(e);
     }
     return new Matrix(transform.m11, transform.m12, transform.m14, transform.m21, transform.m22, transform.m24, 0, 0, 1)
+  }
+  inverse(){
+    let a = this.m11;
+    let b = this.m12;
+    let c = this.m21;
+    let d = this.m22;
+    let dx = this.m13;
+    let dy = this.m23;
+    let determinantScaleRotate = 1/(a*d-b*c);
+    this.m11 = determinantScaleRotate * d;
+    this.m12 = determinantScaleRotate * -b;
+    this.m21 = determinantScaleRotate * -c;
+    this.m22 = determinantScaleRotate * a;
+    this.m13 = -dx;
+    this.m23 = -dy;
+    return this;
+
+  }
+  static inverse(m){
+    return new Matrix(m).invert();
   }
   // static fromTranslation(one, two) {
   //   return this.identity.translate(one, two);

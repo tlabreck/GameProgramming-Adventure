@@ -10,11 +10,11 @@ export default {
   //     gameObject: {
   //       name: "HeroHat",
   //       components: [
-  //         { name: "PolygonGeometryComponent", args: [[{x:-15, y:0}, {x:15, y:0}, {x:0, y:-15}]] },
-  //         { name: "DrawGeometryComponent", args: ["brown"] }
+  //         { name: "PolygonGeometryComponent", args: [[{x:-10, y:0}, {x:10, y:0}, {x:0, y:-40}]] },
+  //         { name: "DrawGeometryComponent", args: ["white"] }
   //       ]
 
-  //     },sx:.5, sy:.5,x:5,y:0
+  //     },sx:.5, sy:.5,y:-5
   //   }
   ]
 }

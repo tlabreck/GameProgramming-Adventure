@@ -4,7 +4,7 @@ export default {
     {
       gameObject: {
         name:"MainCamera",components:[
-          {name:"WorldCameraComponent"}
+          {name:"WorldCameraComponent"}//, args: ["black"]}
         ]
       },sx:.75,sy:.75
     },
@@ -30,7 +30,16 @@ export default {
           { name: "DrawGeometryComponent", args: ["lightgreen"] },
           { name: "RectangleGeometryComponent", args: [640, 480] },
         ]
-      }//, x:-320, y:-240
+      }
+    },
+    {
+      gameObject: {
+        name: "Sky",
+        components: [
+          { name: "DrawGeometryComponent", args: ["lightblue"] },
+          { name: "RectangleGeometryComponent", args: [640, 185] },
+        ]
+      },y:-148
     },
     {
       gameObject: {
@@ -46,7 +55,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:-40, y:-60
+            }, x:-40, y:-58
           },
           {
             gameObject: {
@@ -55,7 +64,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:40, y:-60
+            }, x:40, y:-58
           },
           {
             gameObject: {
@@ -64,7 +73,7 @@ export default {
                 { name: "DrawGeometryComponent", args: ["gray"] },
                 { name: "RectangleGeometryComponent", args: [20, 20] },
               ]
-            }, x:0, y:-60
+            }, x:0, y:-58
           },
           {
             gameObject: {
@@ -121,7 +130,7 @@ export default {
             }, x:20, y:-25
           },
         ]
-      }, x:-50, y:-150
+      }, y:-105
     },
     
     {

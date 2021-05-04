@@ -54,25 +54,29 @@ export default class MainControllerComponent extends Engine.Component {
 
     // Used to force collisions
     if (SceneManager.currentScene.name == "MainScene") {
-      // this.compnum.getComponent("ScreenTextComponent").string = score;
-      // this.compnum1.getComponent("ScreenTextComponent").string = score;
+      this.compnum.getComponent("ScreenTextComponent").string = score;
+      this.compnum1.getComponent("ScreenTextComponent").string = score;
 
-      // if (this.heroY == -50 && this.heroX > -60 && this.heroX < 50) {
-      //   this.hero.transform.position.y = this.hero.transform.position.y + 5//this.hero.getComponent("KeyboardMoveComponent");
-      // }
-      // if (this.heroY == -175 && this.heroX > -60 && this.heroX < 50) {
-      //   this.hero.transform.position.y = this.hero.transform.position.y - 5
-      // }
-      // if (this.heroX == -60 && this.heroY > -175 && this.heroY < -50) {
-      //   this.hero.transform.position.x = this.hero.transform.position.x - 5
-      // }
-      // if (this.heroX == 50 && this.heroY > -175 && this.heroY < -50) {
-      //   this.hero.transform.position.x = this.hero.transform.position.x + 5
-      // }
-      // if (this.heroY > -110 && this.heroY < -100 && this.heroX > -60 && this.heroX < 50) {
-      //   mazecomplete = false;
-      //   return SceneManager.changeScene("CheatScene")
-      // }
+      if (this.heroY == -50 && this.heroX > -55 && this.heroX < 55) {
+        this.hero.transform.position.y = this.hero.transform.position.y + 5//this.hero.getComponent("KeyboardMoveComponent");
+      }
+      if (this.heroY == -175 && this.heroX > -55 && this.heroX < 55) {
+        this.hero.transform.position.y = this.hero.transform.position.y - 5
+      }
+      if (this.heroX == -55 && this.heroY > -175 && this.heroY < -50) {
+        this.hero.transform.position.x = this.hero.transform.position.x - 5
+      }
+      if (this.heroX == 55 && this.heroY > -175 && this.heroY < -50) {
+        this.hero.transform.position.x = this.hero.transform.position.x + 5
+      }
+      if (this.heroY < -60 && (this.heroX < -50 || this.heroX > 50)) {
+        this.hero.transform.position.y = this.hero.transform.position.y + 5
+      }
+      if (this.heroY < -110 && this.heroX > -55 && this.heroX < 55) {
+        mazecomplete = false;
+        return SceneManager.changeScene("CheatScene")
+      }
+      
 
 
       let mouse = Input.getMousePosition();
@@ -82,7 +86,7 @@ export default class MainControllerComponent extends Engine.Component {
       if (this.castle) {
         //console.log(this.castle.transform.position.x + " " + this.castle.transform.position.y)
         if (Geometry.Collisions.collision(
-          { geometry: mouse, matrix: Engine.SceneManager.currentScene.camera.transform.worldMatrix },
+          { geometry: mouse, matrix: Engine.SceneManager.currentScene.camera.transform.worldMatrix.inverse() },
           { geometry: this.castle.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.castle.transform.localMatrix }
         )) {
           this.castle.getComponent("DrawGeometryComponent").color = "orange"
@@ -95,11 +99,11 @@ export default class MainControllerComponent extends Engine.Component {
 
     if (SceneManager.currentScene.name == "MazeScene") {
 
-      if (this.heroY > 195 && this.heroY < 235 && this.heroX > -315 && this.heroX < -285) {
-        //score = "1";
-        mazecomplete = true;
-        return SceneManager.changeScene("MainScene")
-      }
+      // if (this.heroY > 195 && this.heroY < 235 && this.heroX > -315 && this.heroX < -285) {
+      //   //score = "1";
+      //   mazecomplete = true;
+      //   return SceneManager.changeScene("MainScene")
+      // }
 
 
 
@@ -110,23 +114,38 @@ export default class MainControllerComponent extends Engine.Component {
       this.endbuttonW = this.endbutton.transform.position.width;
       this.endbuttonH = this.endbutton.transform.position.height;
 
+      this.temp = GameObject.Find("Hero");
+
+
       //this.endbutton.transformComponent.localscale();
       //console.log(this.endbuttonX + " " + this.endbuttonY + " " + this.endbuttonW + " " + this.endbuttonH)
-      if (this.endbutton) {
+      if (this.hero) {
         if (Geometry.Collisions.collision(
-          { geometry: mouse, matrix: Matrix.identity },
+          { geometry: this.hero.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.hero.transform.worldMatrix },
           { geometry: this.endbutton.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.endbutton.transform.worldMatrix }
         )) {
-          this.endbutton.getComponent("DrawGeometryComponent").color = "blue"
+          this.endbutton.getComponent("DrawGeometryComponent").color = "red"
         }
         else {
           this.endbutton.getComponent("DrawGeometryComponent").color = "yellow"
         }
       }
 
+      if (this.hero) {
+        if (Geometry.Collisions.collision(
+          { geometry: this.hero.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.hero.transform.worldMatrix },
+          { geometry: mouse, matrix: Engine.SceneManager.currentScene.camera.transform.worldMatrix.inverse() }
+        )) {
+          this.ground.getComponent("DrawGeometryComponent").color = "white"
+        }
+        else {
+          this.ground.getComponent("DrawGeometryComponent").color = "gray"
+        }
+      }
+
       // if (this.ground) {
       //   if (Geometry.Collisions.collision(
-      //     { geometry: this.hero.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.hero.transform.worldMatrix },
+      //     { geometry: mouse, matrix: Engine.SceneManager.currentScene.camera.transform.worldMatrix.inverse() },
       //     { geometry: this.ground.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.ground.transform.worldMatrix }
       //   )) {
       //     this.ground.getComponent("DrawGeometryComponent").color = "white"
@@ -135,18 +154,6 @@ export default class MainControllerComponent extends Engine.Component {
       //     this.ground.getComponent("DrawGeometryComponent").color = "gray"
       //   }
       // }
-
-      if (this.ground) {
-        if (Geometry.Collisions.collision(
-          { geometry: mouse, matrix: Matrix.identity },
-          { geometry: this.ground.getComponent("RectangleGeometryComponent").asGeometry(), matrix: this.ground.transform.worldMatrix }
-        )) {
-          this.ground.getComponent("DrawGeometryComponent").color = "white"
-        }
-        else {
-          this.ground.getComponent("DrawGeometryComponent").color = "gray"
-        }
-      }
 
       
 

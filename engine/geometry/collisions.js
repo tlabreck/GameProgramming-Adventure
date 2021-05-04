@@ -56,8 +56,6 @@ export default class Collisions {
       }
       else if (two.geometry instanceof Rectangle) {
         let _one = Matrix.multiply(one.matrix, one.geometry);
-        if(Math.random() > .99)
-        console.log(_one)
         _one.minus(two.matrix.extractTranslation());
         let corners = two.geometry.corners;
 
@@ -122,18 +120,32 @@ export default class Collisions {
       else if (two.geometry instanceof Line) {
         return this.collision(two, one);
       }
-      else if (two.geometry instanceof Circle) {
-        console.error("Can't do that");
+      else if(two instanceof Circle) {
+        let sumRadii = one.radius + two.radius
+        return new Point(one.x, one.y).distanceTo(new Point(two.x, two.y)) < sumRadii;
       }
-      else if (two.geometry instanceof Rectangle) {
-        console.error("Can't do that");
+      else if(two instanceof Rectangle){
+        let objects = [];
+        objects.push(new Circle(two.x, two.y, one.radius))
+        objects.push(new Circle(two.x + two.width, two.y, one.radius))
+        objects.push(new Circle(two.x+ two.width, two.y + two.height, one.radius))
+        objects.push(new Circle(two.x, two.y + two.height, one.radius))
+        objects.push(new Rectangle(two.x - one.radius, two.y, two.width + one.radius * 2, two.height))
+        objects.push(new Rectangle(two.x , two.y - one.radius, two.width , two.height+ one.radius * 2))
+
+        for(let object of objects){
+          if(this.inCollision(new Point(one.x, one.y), object)){
+            return true;
+          }
+        }
+        return false;
       }
       else if (two.geometry instanceof Polygon) {
         console.error("Can't do that");
       }
     }
     if (one.geometry instanceof Rectangle) {
-      console.log("Rectangle");
+      //console.log("Rectangle");
       if (two.geometry instanceof Vector2) {
         return this.collision(two, one);
       }
@@ -143,13 +155,29 @@ export default class Collisions {
       else if (two.geometry instanceof Circle) {
         return this.collision(two, one);
       }
-      else if (two.geometry instanceof Rectangle) {
-        console.error("Can't do that");
+      else if(two.geometry instanceof Rectangle) {
+        let left1 = one.x;
+        let right1 = one.x + one.geometry.width;
+        let bottom1 = one.y;
+        let top1 = one.y + one.geometry.height;
+        //console.log(left1 + " " + right1 + " " + bottom1 + " " + top1)
+        let left2 = two.x;
+        let right2 = two.x + two.geometry.width;
+        let bottom2 = two.y;
+        let top2 = two.y + two.geometry.height;
+        //console.log(left2 + " " + right2 + " " + bottom2 + " " + top2)
+        if(left2 > right1) return false;
+        if(right2 < left1) return false;
+        if(bottom2 > top1) return false;
+        if(top2 < bottom1) return false;
+        //console.log("colliding")
+        return true;
       }
       else if (two.geometry instanceof Polygon) {
         console.error("Can't do that");
       }
     }
+    return false;
     if (one.geometry instanceof Polygon) {
       console.log("Rectangle");
       if (two.geometry instanceof Vector2) {

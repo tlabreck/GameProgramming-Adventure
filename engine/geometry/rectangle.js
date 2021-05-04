@@ -1,7 +1,9 @@
 import Geometry from "./collisions.js"
 import Vector2 from "./vector-2.js";
 export default class Rectangle{
-  constructor(width, height){
+  constructor(x, y, width, height){
+    this.x = x;
+    this.y = y;
     this.width = width;
     this.height = height
    

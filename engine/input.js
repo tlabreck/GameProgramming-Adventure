@@ -38,8 +38,8 @@ export default class Input {
     this.frameMousePosition = new Vector2(this.mousePosition);
     if(this.Remap)
       this.frameMousePosition = this.Remap(new Vector2(this.mousePosition));
-      if(Math.random() > .99)
-        console.log(this.frameMousePosition)
+      // if(Math.random() > .99)
+      //   console.log(this.frameMousePosition)
 
     this.frameScrollWheel = this.scrollWheel;
     this.scrollWheel = 0;
