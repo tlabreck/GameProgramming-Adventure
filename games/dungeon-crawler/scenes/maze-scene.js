@@ -342,12 +342,39 @@ export default {
           },
           {
             gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: -220, y: 172.5
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: -235, y: -225
+          },
+          {
+            gameObject: {
               name: "Vertical",
               components: [
                 { name: "DrawGeometryComponent", args: ["blue"] },
                 { name: "RectangleGeometryComponent", args: [15, 100] },
               ]
             }, x: 182.5, y: -140
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 120] },
+              ]
+            }, x: -272.5, y: 20
           },
           {
             gameObject: {
@@ -384,6 +411,240 @@ export default {
                 { name: "RectangleGeometryComponent", args: [15, 80] },
               ]
             }, x: -190, y: -220
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 100] },
+              ]
+            }, x: -272.5, y: 130
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 100] },
+              ]
+            }, x: -272.5, y: 170
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 70] },
+              ]
+            }, x: -205, y: 170
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: -150, y: -225
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: -45, y: 172.5
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: 190, y: 130
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 100] },
+              ]
+            }, x: -277.5, y: -170
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 50] },
+              ]
+            }, x: -42, y: -200
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: -10, y: -225
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [100, 15] },
+              ]
+            }, x: 200, y: -185
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 50] },
+              ]
+            }, x: 100, y: -200
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 80] },
+              ]
+            }, x: 200, y: -220
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [140, 15] },
+              ]
+            }, x: 220, y: -225
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 80] },
+              ]
+            }, x: 283, y: -190
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 100] },
+              ]
+            }, x: 230, y: -140
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [30, 15] },
+              ]
+            }, x: 250, y: -97.5
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 100] },
+              ]
+            }, x: 270, y: -55
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [80, 15] },
+              ]
+            }, x: 230, y: 85
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 50] },
+              ]
+            }, x: -35, y: 195
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [50, 15] },
+              ]
+            }, x: 30, y: 172.5
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [160, 15] },
+              ]
+            }, x: 185, y: 185
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 135] },
+              ]
+            }, x: 272, y: 90
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [50, 15] },
+              ]
+            }, x: 295, y: 150
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [50, 15] },
+              ]
+            }, x: -260, y: -185
+          },
+          {
+            gameObject: {
+              name: "Vertical",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [15, 60] },
+              ]
+            }, x: -135, y: 170
+          },
+          {
+            gameObject: {
+              name: "Horizontal",
+              components: [
+                { name: "DrawGeometryComponent", args: ["blue"] },
+                { name: "RectangleGeometryComponent", args: [60, 15] },
+              ]
+            }, x: -255, y: -90
           },
         ]
       }, y: 20

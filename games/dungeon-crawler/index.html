@@ -12,10 +12,11 @@
             GameScenes, 
             GamePrefabs, 
             GameComponents, 
-            mainSceneTitle:"MazeScene", 
+            mainSceneTitle:"TitleScene", 
             title:"Dungeon Crawler",
             width:640, 
-            height:480
+            height:480,
+            layers:["background", "midground", "wrap", "sfx", "foreground", "transition", "screen"]
         }
         Engine.boot(document, options)
     </script>

@@ -52,9 +52,9 @@ class Engine {
     let dctx = deferredCanvas.getContext("2d");
     dctx.name = "Default Canvas"
 
-    let sfxCanvas = document.createElement("canvas");
-    let sfxctx = sfxCanvas.getContext("2d");
-    sfxctx.name = "Special Effects Canvas"
+    let wrapCanvas = document.createElement("canvas");
+    let wrapctx = wrapCanvas.getContext("2d");
+    wrapctx.name = "Special Effects Canvas"
 
     globalThis.bufferCanvas = document.createElement("canvas");
     globalThis.bctx = bufferCanvas.getContext("2d");
@@ -80,13 +80,31 @@ class Engine {
     deferredCanvas.width = width;
     deferredCanvas.height = height;
 
-    sfxCanvas.width = width * 2;
-    sfxCanvas.height = height * 2;
+    wrapCanvas.width = width * 2;
+    wrapCanvas.height = height * 2;
 
-    let drawingLayers = [
-      { name: "default", ctx: dctx },
-      { name: "sfx", ctx: sfxctx }
-    ]
+    let drawingLayers;
+    if (options.layers) {
+      drawingLayers = options.layers.map(i => {
+        let canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        return { name: i, ctx: canvas.getContext("2d") }
+      })
+    }
+    else {
+      drawingLayers = [
+        { name: "default", ctx: dctx },
+        { name: "wrap", ctx: wrapctx }
+      ]
+    }
+
+    if(!drawingLayers.some(i=>i.name == "default"))
+      drawingLayers.splice(0, 0, {name:"default", ctx: dctx})
+
+    let wrap = drawingLayers.find(i => i.name == "wrap");
+    if (wrap)
+      wrap.ctx = wrapctx;
 
     /* Update and draw our game */
     function gameLoop() {
@@ -108,54 +126,34 @@ class Engine {
       ctx.fillStyle = "gray";
       ctx.fillRect(0, 0, cw, ch);
 
-      let drawMode = "CenterScale"
 
-      //Stretch game to window
-      if (drawMode == "Stretch") {
-        ctx.drawImage(deferredCanvas, 0, 0, cw, ch);
-        Engine.Input.Remap = p => new Vector2(p.x / cw * dw, p.y / ch * dh);
-      }
-
-      //Draw in upper-right
-      if (drawMode == "UpperRight") {
-        ctx.drawImage(deferredCanvas, 0, 0);
-        Engine.Input.Remap = p => new Vector2(p.x, p.y);
-      }
-
-      //Draw centered, but not scaled
-      if (drawMode == "Center") {
-        ctx.drawImage(deferredCanvas, (cw - dw) / 2, (ch - dh) / 2);
-        Engine.Input.Remap = p => new Vector2(p.x - (cw - dw) / 2, p.y - (ch - dh) / 2)
-      }
 
       //Draw centered and scaled to fit the window
-      if (drawMode == "CenterScale") {
-        let dAspectRatio = dw / dh;
-        let cAspectRatio = cw / ch;
+      let dAspectRatio = dw / dh;
+      let cAspectRatio = cw / ch;
 
-        let w = cw;
-        let h = ch;
-        if (dAspectRatio < cAspectRatio) {
-          w = h * dAspectRatio;
-        }
-        else {
-          h = w / dAspectRatio
-        }
-        ctx.drawImage(deferredCanvas, (cw - w) / 2, (ch - h) / 2, w, h);
-        Engine.Input.Remap = p => {
-          let x = p.x;
-          let y = p.y;
+      let w = cw;
+      let h = ch;
+      if (dAspectRatio < cAspectRatio) {
+        w = h * dAspectRatio;
+      }
+      else {
+        h = w / dAspectRatio
+      }
+      ctx.drawImage(deferredCanvas, (cw - w) / 2, (ch - h) / 2, w, h);
+      Engine.Input.Remap = p => {
+        let x = p.x;
+        let y = p.y;
 
-          x -= (cw - w) / 2;
-          y -= (ch - h) / 2;
+        x -= (cw - w) / 2;
+        y -= (ch - h) / 2;
 
-          x *= dw / w;
-          y *= dh / h;
-          x -= width / 2;
-          y -= height / 2
+        x *= dw / w;
+        y *= dh / h;
+        x -= width / 2;
+        y -= height / 2
 
-          return new Vector2(x, y);
-        }
+        return new Vector2(x, y);
       }
     }
 
@@ -188,6 +186,6 @@ globalThis.Engine = Engine;
 globalThis.Input = Engine.Input;
 globalThis.Time = Engine.Time;
 globalThis.Geometry = EngineGeometry;
-globalThis.GetGameObject = (name)=>Engine.SceneManager.currentScene.getGameObject(name);
+globalThis.GetGameObject = (name) => Engine.SceneManager.currentScene.getGameObject(name);
 
 export default Engine;

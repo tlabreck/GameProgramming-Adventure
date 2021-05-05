@@ -5,6 +5,7 @@ import Circle from "./circle.js"
 import Rectangle from "./rectangle.js"
 import Matrix from "./matrix.js"
 import Polygon from "./polygon.js"
+import Point from "./vector-2.js";
 
 export default class Collisions {
 
@@ -124,21 +125,21 @@ export default class Collisions {
         let sumRadii = one.radius + two.radius
         return new Point(one.x, one.y).distanceTo(new Point(two.x, two.y)) < sumRadii;
       }
-      else if(two instanceof Rectangle){
-        let objects = [];
-        objects.push(new Circle(two.x, two.y, one.radius))
-        objects.push(new Circle(two.x + two.width, two.y, one.radius))
-        objects.push(new Circle(two.x+ two.width, two.y + two.height, one.radius))
-        objects.push(new Circle(two.x, two.y + two.height, one.radius))
-        objects.push(new Rectangle(two.x - one.radius, two.y, two.width + one.radius * 2, two.height))
-        objects.push(new Rectangle(two.x , two.y - one.radius, two.width , two.height+ one.radius * 2))
+      else if(two.geometry instanceof Rectangle){
+      //   let objects = [];
+      //   objects.push(new Circle(two.geometry.x, two.geometry.y, one.geometry.radius))
+      //   objects.push(new Circle(two.geometry.x + two.geometry.width, two.geometry.y, one.geometry.radius))
+      //   objects.push(new Circle(two.geometry.x+ two.geometry.width, two.geometry.y + two.geometry.height, one.geometry.radius))
+      //   objects.push(new Circle(two.geometry.x, two.geometry.y + two.geometry.height, one.geometry.radius))
+      //   objects.push(new Rectangle(two.geometry.x - one.geometry.radius, two.geometry.y, two.geometry.width + one.geometry.radius * 2, two.geometry.height))
+      //   objects.push(new Rectangle(two.geometry.x , two.geometry.y - one.geometry.radius, two.geometry.width , two.geometry.height+ one.geometry.radius * 2))
 
-        for(let object of objects){
-          if(this.inCollision(new Point(one.x, one.y), object)){
-            return true;
-          }
-        }
-        return false;
+      //   for(let object of objects){
+      //     if(this.inCollision(new Point(one.geometry.x, one.geometry.y), object)){
+      //       return true;
+      //     }
+      //   }
+         return false;
       }
       else if (two.geometry instanceof Polygon) {
         console.error("Can't do that");
@@ -153,18 +154,18 @@ export default class Collisions {
         return this.collision(two, one);
       }
       else if (two.geometry instanceof Circle) {
-        return this.collision(two, one);
+        return this.collision(two.geometry, one.geometry);
       }
       else if(two.geometry instanceof Rectangle) {
-        let left1 = one.x;
-        let right1 = one.x + one.geometry.width;
-        let bottom1 = one.y;
-        let top1 = one.y + one.geometry.height;
+        let left1 = one.geometry.x + one.matrix.m11;
+        let right1 = one.geometry.x + one.geometry.width;
+        let bottom1 = one.geometry.y;
+        let top1 = one.geometry.y + one.geometry.height;
         //console.log(left1 + " " + right1 + " " + bottom1 + " " + top1)
-        let left2 = two.x;
-        let right2 = two.x + two.geometry.width;
-        let bottom2 = two.y;
-        let top2 = two.y + two.geometry.height;
+        let left2 = two.geometry.x;
+        let right2 = two.geometry.x + two.geometry.width;
+        let bottom2 = two.geometry.y;
+        let top2 = two.geometry.y + two.geometry.height;
         //console.log(left2 + " " + right2 + " " + bottom2 + " " + top2)
         if(left2 > right1) return false;
         if(right2 < left1) return false;

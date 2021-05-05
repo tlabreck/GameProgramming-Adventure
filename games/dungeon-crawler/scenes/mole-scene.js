@@ -21,6 +21,34 @@ export default {
     },
     {
       gameObject: {
+        name: "ProgressBar",
+        components: [
+          { name: "DrawGeometryComponent", args: ["black"] },
+          { name: "RectangleGeometryComponent", args: [520, 1] },
+        ], children: [
+          {
+            gameObject: {
+              name: "VertProgressBar",
+              components: [
+                { name: "DrawGeometryComponent", args: ["black"] },
+                { name: "RectangleGeometryComponent", args: [1, 30] },
+              ]
+            },x: -259.5, y: -15, drawLayer: "foreground"
+          },
+          {
+            gameObject: {
+              name: "VertProgressBar",
+              components: [
+                { name: "DrawGeometryComponent", args: ["black"] },
+                { name: "RectangleGeometryComponent", args: [1, 30] },
+              ]
+            },x: 259.5, y: -15, drawLayer: "foreground"
+          },
+        ]
+      }, x: -10, y: -200, drawLayer:"foreground"
+    },
+    {
+      gameObject: {
         name: "Ground",
         components: [
           { name: "DrawGeometryComponent", args: ["lightblue"] },
@@ -30,16 +58,19 @@ export default {
     },
     {
       gameObject: {
-        name: "CircleGameObject",
+        name: "Mole",
         components: [
           { name: "DrawGeometryComponent", args: ["brown"] },
-          { name: "CircleGeometryComponent", args: [30] },
+          { name: "RectangleGeometryComponent", args: [30, 30] },
         ]
-      }
+      }, x: 100, y: 100//, drawLayer: "foreground"
     },
     {
       prefabName: "MainController"
     },
-    { prefabName: "Hero"},
+    { 
+      prefabName: "Hero",
+      drawLayer: "foreground"
+    },
   ]
 }
